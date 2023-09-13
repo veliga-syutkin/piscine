@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ft_putchar_comb2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/23 21:17:41 by vsyutkin          #+#    #+#             */
+/*   Updated: 2023/08/29 17:25:01 by vsyutkin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
+	{
+		ft_putchar('-');
+	}
+	if (nb >= 10)
+	{
+		ft_putchar(nb / 10 + '0');
+		ft_putchar(nb % 10 + '0');
+	}
+	else
+	{
+		ft_putchar('0');
+		ft_putchar(nb % 10 + '0');
+	}
+}
+
+void	ft_ft_putchar_comb2(void)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 1;
+	while (x <= 98)
+	{
+		while (y <= 99)
+		{
+			ft_putnbr(x);
+			write(1, " ", 1);
+			ft_putnbr(y);
+			if (x != 98)
+				write(1, ", ", 2);
+			y++;
+		}
+		x++;
+		y = x + 1;
+	}
+}
+/*
+int	main(void)
+{
+	ft_ft_putchar_comb2();
+	return (0);
+}
+*/
